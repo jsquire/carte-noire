@@ -21,6 +21,28 @@
         return ((target !== undefined) && (target !== null));
     }
 
+    /**
+     * Prevents an event object from performing its default action.
+     * 
+     * @param {object} event [OPTIONAL] The jQuery event object.  If not present, then no special action is taken on the event.
+     * 
+     * @returns {bool} false is returned to signal to any handlers that they should not bubble the event.
+     */
+    function preventEventDefault(event) {
+        if (isDefined(event)) {
+            
+            if (event.preventDefault) {
+                event.preventDefault();
+            }
+
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            }
+        }
+
+        return false;
+    }
+
     // Site definition
 
     var site = {
@@ -51,9 +73,11 @@
 
             menu.on(menuEvents.closed, function() { elements.menuTrigger.show(); });
 
-            elements.menuTrigger.click(function() {
+            elements.menuTrigger.click(function(evt) {
                 elements.menuTrigger.hide();
                 menu.trigger(menuEvents.open);
+                
+                return preventeventDefault(evt);
             });
 
             // If article font sizes are to be adjusted to ensure they fit within their container, 
