@@ -15,12 +15,20 @@
 
 
 <script type="text/javascript">
-   hljs.initHighlightingOnLoad();
-   $(window.legacyInit);
+    hljs.initHighlightingOnLoad();
 
-   {% if page.make-smaller-titles %}
-   $(legacygetStartFontSize);
-   {% endif %}
+    var adjustArticleFontSizes = {% if page.make-smaller-titles %} true {% else %} false {% endif %};
+       
+    $(function() {
+        Site.init({
+            adjustArticleListFontSizes : adjustArticleFontSizes,
+            slideMenuSelector          : '#my-menu',
+            slideMenuTriggerSelector   : '.menu-button',
+            articleContainerSelector   : '.articles',
+            articleTitleSelector       : 'a',
+            articleDateSelector        : 'small'
+        });
+    });
 </script>
 
 
