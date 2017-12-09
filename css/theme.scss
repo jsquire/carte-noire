@@ -148,6 +148,14 @@ ul
     }
 }
 
+.menu-button:focus,
+.menu-button:hover,
+.menu-button:visited,
+.menu-button:active
+{
+    color           : $white;
+}
+
 .content-panel
 {
     background-color: $medium;
@@ -1055,16 +1063,52 @@ td
 
 /* Side Menu Overrides: Convert to an always visible sidebar when space allows */
 
-.slide-menu-item
+#siteMenu
 {
-    display: initial;
+    z-index: inherit;
+}
+
+#siteMenu .slide-menu-item,
+#siteMenu .pages
+{
+    display     : inherit;
+    margin-left : 44px;
 }
 
 @media all and (min-width: $screen-sm-min)
 {
+    .page-content,
+    .footer
+    {
+        margin-left : -$sidebar-width;
+        width       : auto;
+    }
+
+    #mm-blocker
+    {
+        display : none;
+        top     : -50px;
+        left    : -50px;
+        height  : 1px;
+        width   : 1px;
+        z-index : -1000;        
+    };
+
+    #siteMenu
+    {
+        z-index: 999;
+    }
+
+    #siteMenu .slide-menu-item,
+    #siteMenu .pages
+    {
+        margin-left: inherit;
+    }
+
+    #siteMenu .slide-menu-item,
     .slide-menu-item
     {
-        /*display: none; */
+        display: none;
     }
 
     .mm-menu 
@@ -1073,7 +1117,6 @@ td
     }
 
     html.mm-opening .mm-page,
-    html.mm-opening #mm-blocker,
     html.mm-opening .mm-fixed-top,
     html.mm-opening .mm-fixed-bottom 
     {
@@ -1086,7 +1129,6 @@ td
     }
 
     html.mm-right.mm-opening .mm-page,
-    html.mm-right.mm-opening #mm-blocker,
     html.mm-right.mm-opening .mm-fixed-top,
     html.mm-right.mm-opening .mm-fixed-bottom 
     {

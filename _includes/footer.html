@@ -20,13 +20,16 @@
     var adjustArticleFontSizes = {% if page.make-smaller-titles %} true {% else %} false {% endif %};
        
     $(function() {
+        var menuToggle = $('.menu-button');
+        
         Site.init({
             adjustArticleListFontSizes : adjustArticleFontSizes,
             slideMenuSelector          : '#siteMenu',
             slideMenuTriggerSelector   : '.menu-button',
             articleContainerSelector   : '.articles',
             articleTitleSelector       : 'a',
-            articleDateSelector        : 'small'
+            articleDateSelector        : 'small',
+            activeMenuToggleClass      : 'is-active'
         });
     });
 </script>
