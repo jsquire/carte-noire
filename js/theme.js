@@ -39,13 +39,13 @@
         return false;
     }
 
-    // Site definition
+    // Theme definition
 
-    var site = {
+    var theme = {
         /**
-         * Initializes the site functionality.
+         * Initializes the theme behaviors.
          *
-         * @param {object} settings The settings to apply to the site.  Expected members:
+         * @param {object} settings The settings to apply to the theme.  Expected members:
          *     adjustArticleListFontSizes : {bool}   A flag indicating whether article list font sizes should be adjusted or not         
          *     slideMenuSelector          : {string} The jQuery selector for the slide menu.
          *     slideMenuTriggerSelector   : {string} The jQuery selector for the slide menu toggle.
@@ -54,7 +54,7 @@
          *     articleDateSelector        : {string} The jQuery selector for elements within an Article Container that contain the article date
          *     activeMenuToggleClass      : {string} [OPTIONAL] A CSS class to apply to the slide menu toggle when the menu is active
          */
-        init : function Site$init(settings) {
+        init : function Theme$init(settings) {
             var sideMenu        = $(settings.slideMenuSelector);
             var menuTrigger     = $(settings.slideMenuTriggerSelector);
             var menuActiveClass = (settings.activeMenuToggleClass || defaultActiveMenuClass);
@@ -66,19 +66,19 @@
 
             menuApi.carteMenuIsOpen = false;
 
-            menuApi.carteOpenMenu = function Site$carteOpenMenu() {
+            menuApi.carteOpenMenu = function Theme$carteOpenMenu() {
                 menuApi.open();
                 menuTrigger.addClass(menuActiveClass);
                 menuApi.carteMenuIsOpen = true;
             }
 
-            menuApi.carteCloseMenu = function Site$carteCloseMenu() {
+            menuApi.carteCloseMenu = function Theme$carteCloseMenu() {
                 menuApi.close();
                 menuTrigger.removeClass(menuActiveClass);
                 menuApi.carteMenuIsOpen = false;
             }
 
-            menuApi.carteToggleMenu = function Site$carteToggleMenu() {
+            menuApi.carteToggleMenu = function Theme$carteToggleMenu() {
                 menuTrigger.toggleClass(menuActiveClass);
 
                 if (menuApi.carteMenuIsOpen) {
@@ -106,7 +106,7 @@
             // If article font sizes are to be adjusted to ensure they fit within their container, 
             // then capture the target elements and watch for resizes to the window.
 
-            var resizeArticleTitles = function Site$resizeArticleTitles() {};
+            var resizeArticleTitles = function Theme$resizeArticleTitles() {};
 
             if (settings.adjustArticleListFontSizes) {
                 var articleContainers = $(settings.articleContainerSelector);
@@ -122,7 +122,7 @@
 
                 var initialFontSize = parseInt(artitleTitles[articleContainers.first()].css('font-size'), 10);
                
-                resizeArticleTitles = function Site$resizeArticleTitles() {                    
+                resizeArticleTitles = function Theme$resizeArticleTitles() {                    
                     // Ensure that the article titles and dates are sized to correctly fit within their
                     // container elements.
 
@@ -185,6 +185,6 @@
 
     // == Exports ==
 
-    root.Site = site;
+    root.Theme = theme;
 
 })(window, window, jQuery);
