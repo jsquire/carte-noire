@@ -1146,4 +1146,23 @@ td
     {
         right: -$sidebar-width;
     }
+
+    .mm-page
+    {
+        position : relative;
+        left     : $sidebar-width; 
+    }
+
+    .mm-page,
+    .mm-fixed-top,
+    .mm-fixed-bottom,
+    .mm-menu.mm-horizontal > .mm-panel,
+    html.mm-slide .mm-menu
+    {
+        -webkit-transition : none 0.0s step-end;
+        -moz-transition    : none 0.0s step-end;
+        -ms-transition     : none 0.0s step-end;
+        -o-transition      : none 0.0s step-end;
+        transition         : none 0.0s step-end;
+    }
 }
