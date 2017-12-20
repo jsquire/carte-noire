@@ -40,6 +40,7 @@ $screen-md-min: 992px;
 $screen-lg-min: 1200px;
 
 $sidebar-width: 230px;
+$sidebar-resident-min: 1100px;
 
 /* Globals */
 
@@ -845,10 +846,6 @@ ul
             }
 
         }
-
-        .comments
-        {}
-
     }
 }
 
@@ -963,35 +960,49 @@ ul
 
 .footer
 {
-    width      : 100%;
-    margin-left: 0;
+    font-size    : 0.8em;
+    position     : relative;
+    bottom       : 0;
+    width        : 100%;
+    padding-left : $sidebar-width;
 
     .fa-heart
     {
         color: $red;
-    }
-    @media (min-width: $screen-sm-min)
+    }   
+
+    .left
     {
-        width      : 90%;
-        margin-left: 5%;
+       text-align : left;
     }
-    @media (min-width: $screen-md-min)
+    
+    .right
     {
-        width      : 80%;
-        margin-left: 10%;
-    }
-    @media (min-width: $screen-lg-min)
-    {
-        width      : 70%;
-        margin-left: 15%;
+        text-align : right;
     }
 
     div
     {
+        display      : inline-block;
         color        : $light-medium;
         text-align   : center;
-        margin-top   : 20px;
-        margin-bottom: 20px;
+        margin-top   : 5px;
+        margin-bottom: 5px;
+        width        : 49%;
+    }
+
+    @media (max-width: $screen-sm-min)
+    {
+        div
+        {
+            display : block;
+        }
+
+        .left,
+        .right
+        {
+            text-align : center;
+        }
     }
 }
 
@@ -1075,13 +1086,25 @@ td
     margin-left : 44px;
 }
 
-@media all and (min-width: $screen-sm-min)
+@media all and (min-width: $sidebar-resident-min)
 {
-    .page-content,
-    .footer
+    html,
+    html.mm-opened,
+    html.mm-opened body
+    {
+        overflow : auto;
+    }
+
+    .page-content
     {
         margin-left : -$sidebar-width;
         width       : auto;
+    }
+    
+    .footer
+    {
+        margin-left : -$sidebar-width;
+        
     }
 
     #mm-blocker
