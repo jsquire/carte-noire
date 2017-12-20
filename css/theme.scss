@@ -62,7 +62,9 @@ body
 }
 
 a,
-a:active
+a:active,
+a:visited,
+a:link
 {
     color          : $light-blue;
     text-decoration: none;
@@ -71,7 +73,7 @@ a:active
 a:hover
 {
     color          : $dark-blue;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 ul
@@ -401,18 +403,6 @@ ul
                 }
 
             }
-        }
-
-        a,
-        a:active
-        {
-            color      : $white;
-            white-space: nowrap;
-        }
-
-        a:hover
-        {
-            color: $light-blue;
         }
     }
 
@@ -969,17 +959,7 @@ ul
     .fa-heart
     {
         color: $red;
-    }   
-
-    .left
-    {
-       text-align : left;
-    }
-    
-    .right
-    {
-        text-align : right;
-    }
+    } 
 
     div
     {
@@ -987,22 +967,13 @@ ul
         color        : $light-medium;
         text-align   : center;
         margin-top   : 5px;
-        margin-bottom: 5px;
-        width        : 49%;
+        margin-bottom: 5px;        
+        width        : 100%
     }
 
-    @media (max-width: $screen-sm-min)
+    @media (max-width: $sidebar-resident-min)
     {
-        div
-        {
-            display : block;
-        }
-
-        .left,
-        .right
-        {
-            text-align : center;
-        }
+        padding-left : 0;
     }
 }
 
@@ -1092,7 +1063,7 @@ td
     html.mm-opened,
     html.mm-opened body
     {
-        overflow : auto;
+        overflow-y : auto;
     }
 
     .page-content
